@@ -1,0 +1,43 @@
+.main_review{
+    min-height: 50vh;
+    padding-top: 12vh;
+}
+
+#grid-table {
+    min-width: 60vw;
+    width: auto;
+    flex: 1;
+    display: grid;
+    border-collapse: collapse;
+    grid-template-columns:
+    minmax(3rem, 1fr)
+    minmax(3rem, 1fr)
+    minmax(6rem, 3fr);
+}
+thead, tbody, .grid-table-tr {
+    display: contents;
+}
+#review_form{
+    margin: 3rem;
+}
+
+#reviewList{
+    margin: 3rem;
+}
+
+#subm_inp{
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    transition-duration: 0.4s;
+    width: 10rem;
+    height: 2rem;
+    color: black;
+}
+#subm_inp:hover{
+    background-color: #04AA6D; /* Green */
+    color: white;
+}
+input{
+    margin-bottom: 1rem;
+
+}

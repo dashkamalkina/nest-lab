@@ -1,0 +1,33 @@
+<link rel='stylesheet' href='review_page.css' />
+<script src='scripts/review_script.js'></script>
+
+<main class='main_review'>
+  <form id='review_form'>
+    <div><label for='name'>Имя:</label>
+      <input id='name' type='text' required /></div>
+    <div><label for='rate'>Оценка:</label>
+      <input type='number' id='rate' name='rate' required /></div>
+    <div><label for='text'>Текст комментария:</label>
+      <input type='text' id='text' name='text' required /></div>
+    <input id='subm_inp' type='submit' value='Добавить' />
+  </form>
+  <p id='warning' style='color: red'></p>
+  <div id='reviewList'>
+    <table id='table_head'>
+      <tbody>
+        <tr>
+          <th>Имя</th>
+          <th>Оценка</th>
+          <th>Текст</th>
+        </tr>
+        <template id='reviewTemplate'>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -1,0 +1,35 @@
+#user-container{
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 10vw;
+    background-color: #ACACAC;
+}
+#preloader{
+
+    /*background-image: url("img/1473.gif");*/
+    background-size: cover;
+    aspect-ratio: 1;
+    display: none;
+    width: 10vw;
+}
+
+.flex_contacts{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-style: normal;
+    font-weight: 800;
+}
+.flex_row{
+    display: flex;
+    flex-direction: row;
+}
+
+.vw100{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
