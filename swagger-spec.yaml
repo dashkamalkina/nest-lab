@@ -1,0 +1,106 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_root
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /contacts:
+    get:
+      operationId: AppController_contacts
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /review_page:
+    get:
+      operationId: AppController_review
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /register:
+    get:
+      operationId: AppController_register
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /login:
+    get:
+      operationId: AppController_login
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /review/all:
+    get:
+      operationId: ReviewController_getAll
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /review/create:
+    post:
+      operationId: createReview
+      summary: ""
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateReviewBody"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+      security:
+        - basic: []
+info:
+  title: Really
+  description: Really API
+  version: "1.0"
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+  schemas:
+    CreateReviewBody:
+      type: object
+      properties:
+        name:
+          type: string
+        rate:
+          type: number
+        content:
+          type: string
+      required:
+        - name
+        - rate
+        - content
+    Review:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        rate:
+          type: number
+        content:
+          type: string
+      required:
+        - id
+        - name
+        - rate
+        - content

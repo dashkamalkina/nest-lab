@@ -1,14 +1,27 @@
 <link rel='stylesheet' href='review_page.css' />
-<script src='scripts/review_script.js'></script>
+<link
+  rel='stylesheet'
+  type='text/css'
+  href='https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css'
+/>
+<script
+  type='text/javascript'
+  src='https://cdn.jsdelivr.net/npm/toastify-js'
+></script>
+{{!--
+<script src='scripts/review_script.js'></script> --}}
 
 <main class='main_review'>
   <form id='review_form'>
     <div><label for='name'>Имя:</label>
-      <input id='name' type='text' required /></div>
+      <input id='name' type='text' name="name" required />
+    </div>
     <div><label for='rate'>Оценка:</label>
-      <input type='number' id='rate' name='rate' required /></div>
+      <input type='number' id='rate' name='rate' required />
+    </div>
     <div><label for='text'>Текст комментария:</label>
-      <input type='text' id='text' name='text' required /></div>
+      <input type='text' id='content' name='text' required />
+    </div>
     <input id='subm_inp' type='submit' value='Добавить' />
   </form>
   <p id='warning' style='color: red'></p>
@@ -20,14 +33,34 @@
           <th>Оценка</th>
           <th>Текст</th>
         </tr>
-        <template id='reviewTemplate'>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </template>
+        {{#each reviews}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.rate}}</td>
+          <td>{{this.content}}</td>
+        </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>
 </main>
+
+<script>
+  const form = document.getElementById("review_form")
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value
+    const rate = document.getElementById("rate").value
+    const content = document.getElementById("content").value
+
+    await fetch("/review/create", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, rate, content
+      })
+    })
+    window.location.reload()
+
+  })
+</script>
