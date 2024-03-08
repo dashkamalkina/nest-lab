@@ -9,6 +9,7 @@ import { TimingInterceptor } from './interceptors/time.interceptor';
 import { SupertokensExceptionFilter } from './auth/auth.filter';
 import supertokens from 'supertokens-node';
 import { writeFile } from 'fs/promises';
+import config from './config';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -44,7 +45,7 @@ async function bootstrap() {
   app.useGlobalFilters(new SupertokensExceptionFilter());
 
   app.enableCors({
-    origin: ['http://localhost:3000'],
+    origin: [config.APP_DOMAIN],
     allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
     credentials: true,
   });

@@ -5,11 +5,12 @@ import {
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
+import config from 'src/config';
 // import { Server, Socket } from 'socket.io';
 import UserRoles from 'supertokens-node/recipe/userroles';
 
 @WebSocketGateway({
-  cors: { origin: ['http://localhost:3000'], credentials: true },
+  cors: { origin: [config.APP_DOMAIN], credentials: true },
 })
 export class EventGateway {
   @WebSocketServer()

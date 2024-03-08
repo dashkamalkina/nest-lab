@@ -17,7 +17,7 @@
   <script>
     supertokens.init({
       appInfo: {
-        apiDomain: "http://localhost:3000",
+        apiDomain: window.location.protocol + window.location.hostname + window.location.port,
         apiBasePath: "/api",
         appName: "...",
       },
@@ -29,17 +29,17 @@
   </script>
   <script>
     supertokensSession.getAccessToken().then(async () => {
-      window.socket = io.connect('http://localhost:3000');
+      window.socket = io.connect(window.location.protocol + window.location.hostname + window.location.port);
       const userId = await supertokensSession.getUserId();
       console.log(userId)
       window.socket.emit("join-admin", userId)
-      window.socket.on("new_review", (mail)=>{
+      window.socket.on("new_review", (mail) => {
         Toastify({
-        text: `${mail} добавил новый отзыв`,
-        duration: 2000, // Set the duration for how long the toast should be visible
-        gravity: 'top', // You can adjust the position (top, bottom, left, right)
-        backgroundColor: 'green', // Customize the background color
-      }).showToast();
+          text: `${mail} добавил новый отзыв`,
+          duration: 2000, // Set the duration for how long the toast should be visible
+          gravity: 'top', // You can adjust the position (top, bottom, left, right)
+          backgroundColor: 'green', // Customize the background color
+        }).showToast();
       })
     }).catch(console.log)
     async function logout() {
