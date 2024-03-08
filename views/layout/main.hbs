@@ -17,7 +17,7 @@
   <script>
     supertokens.init({
       appInfo: {
-        apiDomain: window.location.protocol + window.location.hostname + window.location.port,
+        apiDomain: window.location.protocol + '//' + window.location.hostname + (window.location.port ? `:${window.location.port}` : ""),
         apiBasePath: "/api",
         appName: "...",
       },
@@ -29,7 +29,7 @@
   </script>
   <script>
     supertokensSession.getAccessToken().then(async () => {
-      window.socket = io.connect(window.location.protocol + window.location.hostname + window.location.port);
+      window.socket = io.connect('/');
       const userId = await supertokensSession.getUserId();
       console.log(userId)
       window.socket.emit("join-admin", userId)
